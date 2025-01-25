@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy to Clipboard Demo</title>
+</head>
+<body>
+    <button id="copy-btn">Copy Lua script to clipboard</button>
+
+    <script>
+        const copyBtn = document.getElementById('copy-btn');
+        copyBtn.addEventListener('click', () => {
+            copyToClipboard(`loadstring(game:HttpGet('https://raw.githubusercontent.com/BlitzIsKing/UniversalFarm/main/Loader/Regular'))()`);
+        });
+
+        async function copyToClipboard(textToCopy) {
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                alert('Lua script copied to clipboard:');
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy text to clipboard.');
+            }
+        }
+    </script>
+</body>
+</html>
